@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>A SIMPLE FORM</title>
+  <title>Password Salting</title>
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstap-theme.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">-->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstap-theme.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 </head>
 <body>
 

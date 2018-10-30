@@ -1,23 +1,27 @@
 
 <?php
-	include_once('connection.php'); //For connecting the database
-	//no password decryption for crypt() function
-	function encryption(){
-		$salt=('nepal');
-		$hashed_password = crypt ( '$password','$salt');
-		return $hashed_password;
+	//For connecting the database
+	$link = mysqli_connect("localhost","root","", "practise");
+	if (!$link) {
+	    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+	    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+	    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+	    exit;
 	}
+	
 
 session_start();
 	$usern = $_POST['username']; //using post method's username to set variable
 	$_SESSION["username"]=$usern; //declaring session variable and putting usern declared above
 	echo $_SESSION["username"];
+
 	$input_password = $_POST['password'];
-	$hashed_password=encryption($input_password);
+	$salt = ('nepal');
+	$hashed_password= crypt($input_password, $salt); //no password decryption for crypt() function
 
 	//fetch previous password
-		$query = mysql_query("SELECT password FROM users WHERE username='$usern' ")or die(mysql_error());
-		$row = mysql_fetch_row($query);
+		$query = mysqli_query($link, "SELECT password FROM users WHERE username='$usern' ")or die(mysql_error());
+		$row = mysqli_fetch_row($query);
 		$previous_password = $row[0];
 			 
 
@@ -30,13 +34,7 @@ session_start();
 	}
 
 		
-
-
-//log functionality not working as of now
-		//mysql_query("insert into admin_log (username,login_date,admin_id)values('$username',NOW(),".$row['user_id'].")")or die(mysql_error());
-		// }else{ 
-		//echo 'false';
-		//}	
+	mysqli_close($link);
 				
 ?>
 
